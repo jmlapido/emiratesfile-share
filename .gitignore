@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OpenNext build output
+/.open-next/
+
+# Wrangler local state
+/.wrangler/
+
+# Claude Code local settings
+/.claude/

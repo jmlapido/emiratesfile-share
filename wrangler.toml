@@ -1,0 +1,19 @@
+name = "emiratesfile-share"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+main = ".open-next/worker.js"
+
+[assets]
+directory = ".open-next/assets"
+
+[vars]
+JWT_SECRET = "d1f81cc8b89277b602299a9e209619dcd6032ece872bf9dda5ee21e5dee6983d"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "emiratesfile-share-db"
+database_id = "f1b1bea8-2f19-4196-a9d0-31178d7dab15"
+
+[[r2_buckets]]
+binding = "FILE_BUCKET"
+bucket_name = "emiratesfile-share"

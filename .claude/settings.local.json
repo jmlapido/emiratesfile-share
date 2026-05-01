@@ -3,7 +3,34 @@
     "allow": [
       "Bash(npm --version)",
       "Bash(npx wrangler *)",
-      "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-src-dir --import-alias \"@/*\" --no-eslint --yes)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-src-dir --import-alias \"@/*\" --no-eslint --yes)",
+      "Bash(node -e ' *)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('bin',{}\\), indent=2\\)\\)\")",
+      "Bash(npx opennextjs-cloudflare *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://emiratesfile-share.sntae.workers.dev/login\")",
+      "Bash(curl -s -X POST \"https://emiratesfile-share.sntae.workers.dev/api/auth\" -H \"Content-Type: application/json\" -d '{\"password\":\"matthew123\"}')",
+      "Bash(curl -sv \"https://emiratesfile-share.sntae.workers.dev/api/auth\" -X POST -H \"Content-Type: application/json\" -d '{\"password\":\"matthew123\"}')",
+      "Bash(curl -s \"https://emiratesfile-share.sntae.workers.dev/api/auth\" -X POST -H \"Content-Type: application/json\" -d '{\"password\":\"matthew123\"}')",
+      "Bash(curl -s -X POST https://emiratesfile-share.sntae.workers.dev/api/auth -H 'Content-Type: application/json' -d '{\"password\":\"matthew123\"}' -c /tmp/cookies.txt -b /tmp/cookies.txt)",
+      "Bash(curl -s https://emiratesfile-share.sntae.workers.dev/api/file -c /tmp/cookies.txt -b /tmp/cookies.txt)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" \"https://emiratesfile-share.sntae.workers.dev/login\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" \"https://emiratesfile-share.sntae.workers.dev/\")",
+      "Bash(curl -s \"https://emiratesfile-share.sntae.workers.dev/login\")",
+      "Bash(curl -s -X POST https://emiratesfile-share.sntae.workers.dev/api/auth -H 'Content-Type: application/json' -d '{\"password\":\"matthew123\"}' -c /tmp/cj.txt)",
+      "Bash(curl -s https://emiratesfile-share.sntae.workers.dev/login)",
+      "Bash(curl -s https://emiratesfile-share.sntae.workers.dev/login -o /dev/null)",
+      "Bash(pkill -f \"wrangler dev\")",
+      "Bash(curl -s -i http://localhost:9000/login)",
+      "Bash(jobs)",
+      "Bash(curl -s http://localhost:9001/login)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(tasklist)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(npm cache *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://emiratesfile-share.sntae.workers.dev/login)",
+      "Bash(curl -s -X POST https://emiratesfile-share.sntae.workers.dev/api/auth -H 'Content-Type: application/json' -d '{\"password\":\"matthew123\"}' -c /tmp/prod_cookies.txt)",
+      "Bash(curl -s https://emiratesfile-share.sntae.workers.dev/api/file -b /tmp/prod_cookies.txt)",
+      "Bash(git init *)"
     ]
   }
 }
