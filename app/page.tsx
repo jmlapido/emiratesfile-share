@@ -93,15 +93,16 @@ export default function Home() {
   if (!appData) return null;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-6 px-4">
-      <div className="w-full max-w-5xl flex flex-col gap-0 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center md:py-6 md:px-4">
+      <div className="w-full md:max-w-5xl flex flex-col rounded-none md:rounded-2xl overflow-hidden shadow-none md:shadow-lg border-0 md:border md:border-gray-200">
         {/* Top Nav */}
-        <div className="bg-white border-b border-gray-200 px-5 py-2.5 flex items-center justify-between text-sm">
+        <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between text-sm">
           <span className="font-semibold text-gray-800">Emirates File Share</span>
-          <div className="flex items-center gap-4">
-            <span className="text-gray-500">
+          <div className="flex items-center gap-3">
+            <span className="text-gray-500 hidden sm:inline">
               Signed in as <span className="font-medium text-gray-700">{appData.currentUser.userName}</span>
             </span>
+            <span className="text-gray-700 font-medium sm:hidden text-xs">{appData.currentUser.userName}</span>
             <button
               onClick={handleLogout}
               className="text-gray-500 hover:text-gray-700 underline underline-offset-2 text-xs"
@@ -111,10 +112,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Split Layout: 75 / 25 */}
-        <div className="flex min-h-[520px]">
-          {/* Left: File Panel (75%) */}
-          <div className="w-3/4 bg-white overflow-y-auto border-r border-gray-200">
+        {/* Layout: side-by-side on md+, stacked on mobile */}
+        <div className="flex flex-col md:flex-row md:min-h-[520px]">
+          {/* File Panel — full width on mobile, 75% on desktop */}
+          <div className="w-full md:w-3/4 bg-white overflow-y-auto md:border-r border-gray-200">
             <FilePanel
               file={appData.file}
               lock={appData.lock}
@@ -123,8 +124,8 @@ export default function Home() {
             />
           </div>
 
-          {/* Right: History Panel (25%) */}
-          <div className="w-1/4 bg-white overflow-hidden flex flex-col">
+          {/* History Panel — full width below on mobile, 25% sidebar on desktop */}
+          <div className="w-full md:w-1/4 bg-white border-t md:border-t-0 border-gray-200 flex flex-col" style={{maxHeight: '420px', minHeight: '280px'}}>
             <HistoryPanel history={history} />
           </div>
         </div>
