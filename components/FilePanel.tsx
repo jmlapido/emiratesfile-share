@@ -192,25 +192,39 @@ export default function FilePanel({ file, lock, currentUser, onRefresh }: Props)
         </div>
       )}
 
-      {/* Download Button */}
-      <button
-        onClick={handleDownload}
-        disabled={!canDownload}
-        className={`w-full py-3 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
-          canDownload
-            ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm'
-            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-        }`}
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        {isLockedByOther
-          ? `Locked — waiting for ${lock?.locked_by_name}`
-          : file
-          ? 'Download File'
-          : 'No File Available'}
-      </button>
+      {/* Download + Skip row */}
+      <div className={`flex gap-3 ${isLockedByMe ? '' : ''}`}>
+        <button
+          onClick={handleDownload}
+          disabled={!canDownload}
+          className={`flex-1 py-3 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
+            canDownload
+              ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+          }`}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          {isLockedByOther
+            ? `Locked — waiting for ${lock?.locked_by_name}`
+            : file
+            ? 'Download File'
+            : 'No File Available'}
+        </button>
+
+        {isLockedByMe && (
+          <button
+            onClick={handleSkip}
+            className="px-5 py-3 rounded-xl border-2 border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 font-semibold text-sm transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Skip Upload
+          </button>
+        )}
+      </div>
 
       {/* Upload Zone */}
       {canUpload && (
@@ -251,16 +265,6 @@ export default function FilePanel({ file, lock, currentUser, onRefresh }: Props)
             onChange={(e) => handleFiles(e.target.files)}
           />
         </div>
-      )}
-
-      {/* Skip Button */}
-      {isLockedByMe && (
-        <button
-          onClick={handleSkip}
-          className="text-sm text-gray-500 hover:text-gray-700 underline underline-offset-2 text-center"
-        >
-          Skip upload — release lock without uploading
-        </button>
       )}
 
       {/* Error */}
